@@ -56,12 +56,27 @@
 
 #elif defined(__sun)
 #include <thread.h> // for thr_self
+
+#elif defined(__QNXNTO__)
+#include <process.h>
 #endif
 
 #endif // unix
 
 #ifndef __has_feature      // Clang - feature checking macros.
 #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif
+
+// prototype declerations needed when compiling with -std=c++11 on QNX 7.0 
+#ifdef __QNXNTO__
+    extern "C"
+    {
+        int isatty( int fildes );
+        int stat( const char * path, struct stat * buf );
+        int fileno( FILE * stream );
+        pid_t getpid( void );
+        int fstat( int filedes, struct stat* buf );
+    }
 #endif
 
 namespace spdlog {
