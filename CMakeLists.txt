@@ -26,7 +26,7 @@ endif ()
 # Compiler config
 # ---------------------------------------------------------------------------------------
 if (NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 11)
+    set(CMAKE_CXX_STANDARD 14)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
@@ -145,7 +145,11 @@ add_library(spdlog::spdlog ALIAS spdlog)
 target_compile_definitions(spdlog PUBLIC SPDLOG_COMPILED_LIB)
 target_include_directories(spdlog PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
-target_link_libraries(spdlog PUBLIC Threads::Threads)
+
+if (NOT ${CMAKE_SYSTEM_NAME} STREQUAL "QNX")
+ target_link_libraries(spdlog PUBLIC Threads::Threads)
+endif()
+
 spdlog_enable_warnings(spdlog)
 
 set_target_properties(spdlog PROPERTIES VERSION ${SPDLOG_VERSION} SOVERSION ${SPDLOG_VERSION_MAJOR})
