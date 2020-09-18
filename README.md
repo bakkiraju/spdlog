@@ -1,3 +1,9 @@
+Forked and added support for QNX. 
+
+Currently works with QNX SDP 7.0 and libc++
+
+Issues with libstdc++ provided by SDP.
+
 # spdlog
 
 Very fast, header-only/compiled, C++ logging library. [![Build Status](https://travis-ci.org/gabime/spdlog.svg?branch=v1.x)](https://travis-ci.org/gabime/spdlog)&nbsp; [![Build status](https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true)](https://ci.appveyor.com/project/gabime/spdlog) [![Release](https://img.shields.io/github/release/gabime/spdlog.svg)](https://github.com/gabime/spdlog/releases/latest)
