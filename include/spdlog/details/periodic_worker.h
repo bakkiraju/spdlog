@@ -14,6 +14,19 @@
 #include <functional>
 #include <mutex>
 #include <thread>
+#ifdef __QNXNTO__
+#include <pthread.h>
+#include <time.h>
+
+extern "C"
+{
+   int nanosleep( const struct timespec* rqtp,
+               struct timespec* rmtp );
+}
+#endif
+
+
+
 namespace spdlog {
 namespace details {
 
