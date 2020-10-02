@@ -10,7 +10,7 @@ include(cmake/ide.cmake)
 
 spdlog_extract_version()
 
-project(spdlog VERSION ${SPDLOG_VERSION} LANGUAGES CXX)
+project(spdlog VERSION ${SPDLOG_VERSION} LANGUAGES C CXX)
 message(STATUS "Build spdlog: ${SPDLOG_VERSION}")
 
 include(GNUInstallDirs)
@@ -30,7 +30,6 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 if (NOT CMAKE_CXX_STANDARD)
     # set(CMAKE_CXX_STANDARD 11)
       set(CMAKE_CXX_STANDARD_REQUIRED ON)
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -Werror -stdlib=libstdc++") 
 endif ()
 
 set(CMAKE_CXX_EXTENSIONS OFF)
